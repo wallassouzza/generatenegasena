@@ -1,0 +1,41 @@
+function generateMegaSenaGames(numGames) {
+  // Cria um array vazio para armazenar os jogos gerados
+  let games = [];
+
+  // Repete o processo de geração de jogos a quantidade de vezes solicitada pelo usuário
+  for (let i = 0; i < numGames; i++) {
+    // Cria um array vazio para armazenar os números escolhidos
+    let gameNumbers = [];
+
+    // Repete o processo de escolha de números para cada jogo
+    for (let j = 0; j < 6; j++) {
+      // Escolhe um número aleatório entre 1 e 60
+      let randomNumber = Math.floor(Math.random() * 60) + 1;
+
+      // Verifica se o número já foi escolhido para evitar repetições
+      while (gameNumbers.includes(randomNumber)) {
+        randomNumber = Math.floor(Math.random() * 60) + 1;
+      }
+
+      // Adiciona o número escolhido ao array de números do jogo
+      gameNumbers.push(randomNumber);
+    }
+
+    // Ordena os números do jogo em ordem crescente
+    gameNumbers.sort(function(a, b) {
+      return a - b;
+    });
+
+    // Adiciona o jogo gerado ao array de jogos
+    games.push(gameNumbers);
+  }
+
+  // Retorna o array de jogos gerados
+  return games;
+}
+
+// Exemplo de uso: gera 5 jogos da Mega-Sena
+let games = generateMegaSenaGames(5);
+
+// Exibe os jogos gerados no console
+console.log(games);
